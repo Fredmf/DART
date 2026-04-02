@@ -28,7 +28,7 @@ bash dart-init.sh "My Project"
 Or clone the repo and run it directly:
 
 ```bash
-git clone https://github.com/<your-username>/DART.git
+git clone https://github.com/Fredmf/DART.git
 bash DART/dart-init.sh "My Project"
 ```
 
