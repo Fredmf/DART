@@ -21,7 +21,7 @@ DART works *with* these properties instead of fighting them.
 
 ```bash
 # Download and run the setup script — no chmod needed
-curl -LO https://github.com/Fredmf/DART/releases/download/v0.0.2/dart-init.sh
+curl -LO https://github.com/Fredmf/DART/releases/download/v0.0.3/dart-init.sh
 bash dart-init.sh "My Project"
 ```
 
@@ -220,4 +220,4 @@ MIT
 
 ## Contributing
 
-This is v0.0.2. The methodology will evolve as people use it and discover what works. Open issues for suggestions, sharp edges, or things that don't survive contact with real projects.
+This is v0.0.3. The methodology will evolve as people use it and discover what works. Open issues for suggestions, sharp edges, or things that don't survive contact with real projects.

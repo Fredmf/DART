@@ -595,7 +595,7 @@ import re
 import glob
 import sys
 
-DART_DIR = os.path.dirname(os.path.abspath(__file__))
+DART_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), '.dart')
 PORT = int(sys.argv[1]) if len(sys.argv) > 1 else 8050
 
 
@@ -838,8 +838,11 @@ HTML = r"""<!DOCTYPE html>
   </div>
 
   <!-- DAG Panel -->
-  <div class="lg:w-[420px] w-full border-t lg:border-t-0 lg:border-l border-gray-800 flex flex-col">
-    <div class="px-4 py-3 border-b border-gray-800 text-sm font-semibold text-gray-400">Dependency Graph</div>
+  <div id="dag-panel" class="lg:w-[420px] w-full border-t lg:border-t-0 lg:border-l border-gray-800 flex flex-col transition-all duration-300">
+    <div class="px-4 py-3 border-b border-gray-800 text-sm font-semibold text-gray-400 flex items-center justify-between cursor-pointer select-none" onclick="toggleDAG()">
+      <span>Dependency Graph</span>
+      <svg id="dag-chevron" class="w-4 h-4 text-gray-500 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+    </div>
     <div id="cy" class="flex-1 min-h-[300px]"></div>
   </div>
 
@@ -853,6 +856,31 @@ HTML = r"""<!DOCTYPE html>
 </div>
 
 <script>
+// DAG panel toggle
+let dagCollapsed = false;
+function toggleDAG() {
+  dagCollapsed = !dagCollapsed;
+  const panel = document.getElementById('dag-panel');
+  const cy = document.getElementById('cy');
+  const chevron = document.getElementById('dag-chevron');
+  if (dagCollapsed) {
+    panel.classList.remove('lg:w-[420px]');
+    panel.classList.add('lg:w-auto');
+    cy.classList.add('hidden');
+    chevron.style.transform = 'rotate(0deg)';
+  } else {
+    panel.classList.add('lg:w-[420px]');
+    panel.classList.remove('lg:w-auto');
+    cy.classList.remove('hidden');
+    chevron.style.transform = 'rotate(90deg)';
+    if (cyInstance) cyInstance.resize();
+  }
+}
+// Initialize chevron to open state
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('dag-chevron').style.transform = 'rotate(90deg)';
+});
+
 // State colors
 const STATE_COLORS = {
   seed: {bg:'bg-seed/20', border:'border-seed/40', text:'text-seed', hex:'#a78bfa'},
@@ -1347,6 +1375,7 @@ def main():
 
 if __name__ == '__main__':
     main()
+
 PYTHON
 chmod +x "$DART_DIR/dashboard.py"
 
