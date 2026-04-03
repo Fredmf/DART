@@ -38,6 +38,13 @@ if [ "${1:-}" = "--continue" ] || [ "${1:-}" = "-c" ]; then
   fi
   PORT="${2:-8050}"
   echo "🎯 Resuming DART project"
+  # Kill any leftover DARTDash processes
+  OLD_PIDS=$(pgrep -f 'python3.*dashboard\.py' 2>/dev/null || true)
+  if [ -n "$OLD_PIDS" ]; then
+    echo "$OLD_PIDS" | xargs kill 2>/dev/null || true
+    sleep 0.3
+    echo "   Stopped old dashboard process(es)"
+  fi
   start_dashboard "$PORT"
   echo ""
   echo "   Ready to work. Start an AI session and say:"
@@ -595,7 +602,7 @@ import re
 import glob
 import sys
 
-DART_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), '.dart')
+DART_DIR = os.path.dirname(os.path.abspath(__file__))
 PORT = int(sys.argv[1]) if len(sys.argv) > 1 else 8050
 
 
