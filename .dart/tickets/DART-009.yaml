@@ -1,0 +1,34 @@
+id: DART-009
+type: research
+state: passed
+goal: "Research and document at least three concrete approaches to making DART role isolation practical in a single-agent context. Write findings to a brief."
+
+# DAG
+depends_on: []
+blocks: [DART-010]
+parent: DART-008
+
+# Execution
+role: scout
+granularity: coarse
+priority: high
+context_brief: null
+
+# Verification
+verify:
+  - "Brief exists at .dart/briefs/DART-009-role-isolation.md"
+  - "At least three approaches are described with pros, cons, and implementation complexity"
+  - "Each approach addresses the observed problem: roles collapsed when one agent played all of them"
+
+# I/O
+inputs: [.dart/DART.md, .dart/roles/specialist.md, .dart/roles/evaluator.md, .dart/roles/orchestrator.md]
+outputs: [.dart/briefs/DART-009-role-isolation.md]
+
+# Reflection
+attempts: 0
+lessons: []
+
+# Metadata
+created: 2026-04-03T00:00:00Z
+created_by: orchestrator
+claimed_by: null

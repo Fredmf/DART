@@ -1,0 +1,34 @@
+id: DART-002
+type: implementation
+state: passed
+goal: "Embed dashboard.py into dart-init.sh so the init script generates dashboard.py inside .dart/ during project setup. The generated dashboard must discover its .dart/ dir relative to its own location (not hardcoded)."
+
+# DAG
+depends_on: []
+blocks: [DART-003, DART-005]
+parent: DART-001
+
+# Execution
+role: specialist
+granularity: coarse
+priority: high
+context_brief: null
+
+# Verification
+verify:
+  - "Running dart-init.sh creates .dart/dashboard.py"
+  - "The generated dashboard.py is functionally identical to ../DARTDash/dashboard.py"
+  - "DART_DIR in the generated file resolves relative to the script location, not a hardcoded path"
+
+# I/O
+inputs: [dart-init.sh, ../DARTDash/dashboard.py]
+outputs: [dart-init.sh]
+
+# Reflection
+attempts: 0
+lessons: []
+
+# Metadata
+created: 2026-04-03T00:00:00Z
+created_by: orchestrator
+claimed_by: null

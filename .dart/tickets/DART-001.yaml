@@ -1,0 +1,32 @@
+id: DART-001
+type: seed
+state: decomposed
+goal: "Expand dart-init.sh: embed DARTDash dashboard into the init script, auto-launch it on init and resume, and add smart 'just work' routing so users don't need to specify ticket IDs"
+
+# DAG
+depends_on: []
+blocks: []
+parent: null
+
+# Execution
+role: orchestrator
+granularity: coarse
+priority: high
+context_brief: null
+
+# Verification
+verify:
+  - "All child tasks pass their verification criteria"
+
+# I/O
+inputs: [dart-init.sh, ../DARTDash/dashboard.py]
+outputs: []
+
+# Reflection
+attempts: 0
+lessons: []
+
+# Metadata
+created: 2026-04-03T00:00:00Z
+created_by: orchestrator
+claimed_by: null

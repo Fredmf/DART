@@ -1,0 +1,35 @@
+id: DART-014
+type: verification
+state: passed
+goal: "End-to-end verification of the sub-agent model: confirm all updated files are consistent and the methodology documents no longer instruct a single agent to play multiple roles."
+
+# DAG
+depends_on: [DART-011, DART-012, DART-013]
+blocks: []
+parent: DART-008
+
+# Execution
+role: evaluator
+granularity: coarse
+priority: normal
+context_brief: null
+
+# Verification
+verify:
+  - "orchestrator.md contains sub-agent delegation protocol with prompt template"
+  - "DART.md does not instruct users to 'switch roles' or 'be the specialist'"
+  - "dart-init.sh generates files matching the live .dart/ versions"
+  - "README.md Run Tasks section is consistent with the new model"
+
+# I/O
+inputs: [.dart/DART.md, .dart/roles/orchestrator.md, dart-init.sh, README.md]
+outputs: []
+
+# Reflection
+attempts: 0
+lessons: []
+
+# Metadata
+created: 2026-04-03T00:00:00Z
+created_by: orchestrator
+claimed_by: null

@@ -1,0 +1,34 @@
+id: DART-007
+type: implementation
+state: passed
+goal: "Add --update mode to dart-init.sh that regenerates template files (roles/*.md, DART.md, dashboard.py, _template.yaml, lessons.md header) while preserving user data (tickets, dag.yaml, reflections logs, briefs, workspaces). Also update the existing .dart/ guard message to mention --update alongside --continue."
+
+# DAG
+depends_on: []
+blocks: []
+parent: null
+
+# Execution
+role: specialist
+granularity: coarse
+priority: high
+context_brief: null
+
+# Verification
+verify:
+  - "dart-init.sh --update on an existing .dart/ regenerates roles/*.md, DART.md, dashboard.py, _template.yaml"
+  - "dart-init.sh --update preserves dag.yaml, existing tickets, reflection logs, briefs, and workspaces"
+  - "The .dart/ exists guard message mentions --update as an option"
+
+# I/O
+inputs: [dart-init.sh]
+outputs: [dart-init.sh]
+
+# Reflection
+attempts: 0
+lessons: []
+
+# Metadata
+created: 2026-04-03T00:00:00Z
+created_by: orchestrator
+claimed_by: null

@@ -1,0 +1,36 @@
+id: DART-006
+type: seed
+state: passed
+goal: "Update README.md to reflect all changes from DART-002, DART-003, DART-004: document dashboard.py, the --continue resume mode, the 'just work' command, the new .dart/ directory structure (now includes dashboard.py), and fix the install instructions so users don't need to manually chmod +x (either make the script self-invoking with 'bash dart-init.sh' or document chmod +x)"
+
+# DAG
+depends_on: [DART-002, DART-003, DART-004]
+blocks: []
+parent: DART-001
+
+# Execution
+role: specialist
+granularity: coarse
+priority: normal
+context_brief: null
+
+# Verification
+verify:
+  - "README quick start works without needing a manual chmod +x step"
+  - "README documents dashboard.py and how it auto-launches"
+  - "README documents --continue / resume mode"
+  - "README documents the 'just work' activation command"
+  - "Directory tree in README includes dashboard.py"
+
+# I/O
+inputs: [README.md, dart-init.sh, .dart/DART.md, .dart/roles/orchestrator.md]
+outputs: [README.md]
+
+# Reflection
+attempts: 0
+lessons: []
+
+# Metadata
+created: 2026-04-03T00:00:00Z
+created_by: orchestrator
+claimed_by: null

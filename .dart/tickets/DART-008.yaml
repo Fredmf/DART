@@ -1,0 +1,34 @@
+id: DART-008
+type: seed
+state: decomposed
+# Children: DART-009 (research), DART-010 (decision), DART-011, DART-012, DART-013, DART-014
+goal: "Redesign DART for single-agent reality: the current methodology assumes each role runs in a fresh, isolated context (separate session per role). In practice, a single AI agent plays all roles in one session and never actually scopes its context. Research how to make role isolation practical — options include: (1) enforcing context scoping via tooling (the init script or a wrapper), (2) designing roles that add value even without hard isolation (e.g. evaluator as a checklist pass, not a fresh perspective), (3) making 'work' launch sub-agents with only the ticket's inputs loaded. The goal: DART should benefit from roles even when one agent does everything."
+
+# DAG
+depends_on: []
+blocks: []
+parent: null
+
+# Execution
+role: orchestrator
+granularity: coarse
+priority: high
+context_brief: null
+
+# Verification
+verify:
+  - "At least two concrete approaches are researched and documented in a brief"
+  - "A decision ticket is created for the human to choose an approach"
+
+# I/O
+inputs: [.dart/DART.md, .dart/roles/orchestrator.md, .dart/roles/specialist.md, .dart/roles/evaluator.md]
+outputs: []
+
+# Reflection
+attempts: 0
+lessons: []
+
+# Metadata
+created: 2026-04-03T00:00:00Z
+created_by: orchestrator
+claimed_by: null

@@ -1,0 +1,36 @@
+id: DART-005
+type: verification
+state: passed
+goal: "End-to-end verification: run dart-init.sh in a temp directory, confirm dashboard.py is created and launches, confirm --continue mode works, confirm DART.md and orchestrator.md contain the 'just work' routing logic"
+
+# DAG
+depends_on: [DART-002, DART-003, DART-004]
+blocks: []
+parent: DART-001
+
+# Execution
+role: evaluator
+granularity: coarse
+priority: normal
+context_brief: null
+
+# Verification
+verify:
+  - "Fresh init in temp dir: .dart/dashboard.py exists and is runnable"
+  - "Dashboard starts on init and is reachable at localhost"
+  - "Continue mode starts dashboard on existing .dart/ without overwriting"
+  - "DART.md contains 'work' activation trigger"
+  - "Orchestrator.md documents deterministic task selection"
+
+# I/O
+inputs: [dart-init.sh, .dart/DART.md, .dart/roles/orchestrator.md]
+outputs: []
+
+# Reflection
+attempts: 0
+lessons: []
+
+# Metadata
+created: 2026-04-03T00:00:00Z
+created_by: orchestrator
+claimed_by: null

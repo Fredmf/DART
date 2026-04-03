@@ -1,0 +1,72 @@
+project: "DART"
+last_updated: 2026-04-03T00:00:00Z
+next_id: 15
+  DART-008:
+    type: seed
+    state: decomposed
+    children: [DART-009, DART-010]
+  DART-009:
+    type: research
+    state: ready
+    depends_on: []
+    blocks: [DART-010]
+  DART-010:
+    type: decision
+    state: passed
+    depends_on: [DART-009]
+    blocks: [DART-011, DART-012]
+  DART-011:
+    type: implementation
+    state: passed
+    depends_on: []
+    blocks: [DART-013, DART-014]
+  DART-012:
+    type: implementation
+    state: passed
+    depends_on: []
+    blocks: [DART-013, DART-014]
+  DART-013:
+    type: implementation
+    state: passed
+    depends_on: [DART-011, DART-012]
+    blocks: [DART-014]
+  DART-014:
+    type: verification
+    state: passed
+    depends_on: [DART-011, DART-012, DART-013]
+    blocks: []
+  DART-007:
+    type: implementation
+    state: ready
+    depends_on: []
+    blocks: []
+nodes:
+  DART-001:
+    type: seed
+    state: decomposed
+    children: [DART-002, DART-003, DART-004, DART-005, DART-006]
+  DART-002:
+    type: implementation
+    state: passed
+    depends_on: []
+    blocks: [DART-003, DART-005, DART-006]
+  DART-003:
+    type: implementation
+    state: passed
+    depends_on: [DART-002]
+    blocks: [DART-005, DART-006]
+  DART-004:
+    type: implementation
+    state: passed
+    depends_on: []
+    blocks: [DART-005, DART-006]
+  DART-005:
+    type: verification
+    state: passed
+    depends_on: [DART-002, DART-003, DART-004]
+    blocks: []
+  DART-006:
+    type: seed
+    state: passed
+    depends_on: [DART-002, DART-003, DART-004]
+    blocks: []

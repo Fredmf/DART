@@ -1,0 +1,32 @@
+id: DART-XXX
+type: implementation  # seed | research | implementation | verification | refactor | integration | decision
+state: seed           # seed | decomposed | ready | claimed | acting | reflecting | passed | failed | stale | blocked | archived
+goal: "Describe what to achieve"
+
+# DAG
+depends_on: []
+blocks: []
+parent: null
+
+# Execution
+role: specialist:backend
+granularity: coarse    # coarse | fine
+priority: normal       # critical | high | normal | low
+context_brief: null
+
+# Verification — MANDATORY for non-seed tasks
+verify:
+  - "Objective, testable pass/fail condition"
+
+# I/O
+inputs: []
+outputs: []
+
+# Reflection (populated after attempts)
+attempts: 0
+lessons: []
+
+# Metadata
+created: null
+created_by: orchestrator
+claimed_by: null

@@ -1,0 +1,34 @@
+id: DART-004
+type: implementation
+state: passed
+goal: "Add 'just work' smart routing to DART: when user says 'work' (without a ticket ID), the orchestrator automatically picks the next task. Logic: (1) resume any 'acting' or 'claimed' ticket first, (2) then pick highest-priority 'ready' ticket, (3) respect DAG order. Update DART.md activation section and orchestrator.md with this behavior."
+
+# DAG
+depends_on: []
+blocks: [DART-005]
+parent: DART-001
+
+# Execution
+role: specialist
+granularity: coarse
+priority: high
+context_brief: null
+
+# Verification
+verify:
+  - "DART.md activation section includes 'work' or 'just work' as a trigger"
+  - "orchestrator.md documents the task selection logic (resume in-progress > highest priority ready > DAG order)"
+  - "Selection logic is deterministic — given the same state, it always picks the same task"
+
+# I/O
+inputs: [.dart/DART.md, .dart/roles/orchestrator.md]
+outputs: [.dart/DART.md, .dart/roles/orchestrator.md]
+
+# Reflection
+attempts: 0
+lessons: []
+
+# Metadata
+created: 2026-04-03T00:00:00Z
+created_by: orchestrator
+claimed_by: null

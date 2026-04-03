@@ -1,0 +1,33 @@
+id: DART-013
+type: implementation
+state: passed
+goal: "Sync dart-init.sh heredoc templates with the updated orchestrator.md and DART.md from DART-011 and DART-012 so that newly initialized projects get the sub-agent model out of the box."
+
+# DAG
+depends_on: [DART-011, DART-012]
+blocks: [DART-014]
+parent: DART-008
+
+# Execution
+role: specialist
+granularity: coarse
+priority: normal
+context_brief: null
+
+# Verification
+verify:
+  - "Running dart-init.sh in a temp dir produces a DART.md that matches the live .dart/DART.md"
+  - "Running dart-init.sh in a temp dir produces an orchestrator.md that matches the live .dart/roles/orchestrator.md"
+
+# I/O
+inputs: [dart-init.sh, .dart/DART.md, .dart/roles/orchestrator.md]
+outputs: [dart-init.sh]
+
+# Reflection
+attempts: 1
+lessons: []
+
+# Metadata
+created: 2026-04-03T00:00:00Z
+created_by: orchestrator
+claimed_by: null

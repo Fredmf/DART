@@ -1,0 +1,34 @@
+id: DART-003
+type: implementation
+state: passed
+goal: "Add dashboard auto-launch to dart-init.sh: (1) start dashboard in background after fresh init, (2) add a 'resume/continue' mode (e.g. dart-init.sh --continue or a separate entry point) that starts the dashboard for an existing .dart/ project"
+
+# DAG
+depends_on: [DART-002]
+blocks: [DART-005]
+parent: DART-001
+
+# Execution
+role: specialist
+granularity: coarse
+priority: high
+context_brief: null
+
+# Verification
+verify:
+  - "After dart-init.sh runs on a new project, dashboard is running in background and URL is printed"
+  - "Running with --continue (or equivalent) on an existing .dart/ project starts the dashboard without re-initializing"
+  - "Dashboard process is backgrounded and does not block the terminal"
+
+# I/O
+inputs: [dart-init.sh]
+outputs: [dart-init.sh]
+
+# Reflection
+attempts: 0
+lessons: []
+
+# Metadata
+created: 2026-04-03T00:00:00Z
+created_by: orchestrator
+claimed_by: null

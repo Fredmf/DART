@@ -20,8 +20,8 @@ DART works *with* these properties instead of fighting them.
 ### Install
 
 ```bash
-# Download and run the setup script
-curl -LO https://github.com/Fredmf/DART/releases/download/0.0.1/dart-init.sh
+# Download and run the setup script — no chmod needed
+curl -LO https://github.com/Fredmf/DART/releases/download/0.0.2/dart-init.sh
 bash dart-init.sh "My Project"
 ```
 
@@ -32,7 +32,7 @@ git clone https://github.com/Fredmf/DART.git
 bash DART/dart-init.sh "My Project"
 ```
 
-This creates the full `.dart/` directory inside your current working directory:
+This creates the full `.dart/` directory inside your current working directory and auto-launches the **DARTDash** web dashboard (default: `http://localhost:8050`):
 
 ```
 .dart/
@@ -49,12 +49,21 @@ This creates the full `.dart/` directory inside your current working directory:
 ├── reflections/
 │   └── lessons.md       ← Cross-task accumulated lessons
 ├── briefs/              ← Scout research output
-└── workspaces/          ← Isolated per-task working dirs
+├── workspaces/          ← Isolated per-task working dirs
+└── dashboard.py         ← DARTDash web dashboard
+```
+
+### Resume an Existing Project
+
+If `.dart/` already exists, use `--continue` (or `-c`) to relaunch the dashboard and pick up where you left off:
+
+```bash
+bash dart-init.sh --continue
 ```
 
 ### Start Your First Session
 
-Open any AI assistant (Claude, ChatGPT, local models — anything that can read files) and say:
+Open any AI assistant (Claude, ChatGPT, local models — anything that can read files). The dashboard is already running at `http://localhost:8050` — use it to track progress. Then say:
 
 ```
 Read .dart/DART.md. You are the orchestrator.
@@ -66,27 +75,19 @@ The AI will create ticket files in `.dart/tickets/`, build a dependency graph in
 
 ### Run Tasks
 
-Switch roles to execute work:
+The orchestrator delegates all work to sub-agents in isolated contexts. You don't switch roles — just tell it to work:
 
 ```
-You are a specialist. Work on DART-003.
+Work on DART-003.
 ```
 
-Evaluate the output:
+Or let it auto-select the next ready task:
 
 ```
-You are the evaluator. Check DART-003 against its verification criteria.
+Work.
 ```
 
-If it fails, reflect and retry:
-
-```
-You are the reflector. Analyze DART-003's failure.
-```
-
-```
-You are a specialist. Retry DART-003, consulting the reflection log.
-```
+The orchestrator will launch a specialist, evaluator, or scout sub-agent with only the files that task needs. When the work is done, it automatically launches an evaluator sub-agent to verify the output. If it fails, a reflector sub-agent analyzes the failure before retrying.
 
 ### Check Progress
 
@@ -219,4 +220,4 @@ MIT
 
 ## Contributing
 
-This is v0.0.1. The methodology will evolve as people use it and discover what works. Open issues for suggestions, sharp edges, or things that don't survive contact with real projects.
+This is v0.0.2. The methodology will evolve as people use it and discover what works. Open issues for suggestions, sharp edges, or things that don't survive contact with real projects.

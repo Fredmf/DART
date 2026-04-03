@@ -1,0 +1,35 @@
+id: DART-011
+type: implementation
+state: passed
+goal: "Rewrite orchestrator.md to enforce sub-agent delegation: the orchestrator NEVER does specialist/evaluator/reflector/scout work itself. When 'work' selects a task, the orchestrator constructs a scoped prompt and launches a sub-agent. The prompt must contain: (1) the role file path, (2) the ticket path, (3) only the inputs/context_brief listed in the ticket. Also update the Smart Work Routing section to include the launch step."
+
+# DAG
+depends_on: []
+blocks: [DART-013, DART-014]
+parent: DART-008
+
+# Execution
+role: specialist
+granularity: coarse
+priority: high
+context_brief: .dart/briefs/DART-009-role-isolation.md
+
+# Verification
+verify:
+  - "orchestrator.md contains a 'Sub-Agent Delegation' or equivalent section"
+  - "The section includes a prompt template that references only: role file, ticket file, inputs, and context_brief"
+  - "orchestrator.md explicitly states the orchestrator must NOT do specialist/evaluator/reflector/scout work itself"
+  - "Smart Work Routing includes the sub-agent launch as its final step"
+
+# I/O
+inputs: [.dart/roles/orchestrator.md, .dart/briefs/DART-009-role-isolation.md]
+outputs: [.dart/roles/orchestrator.md]
+
+# Reflection
+attempts: 0
+lessons: []
+
+# Metadata
+created: 2026-04-03T00:00:00Z
+created_by: orchestrator
+claimed_by: null

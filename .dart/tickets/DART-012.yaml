@@ -1,0 +1,34 @@
+id: DART-012
+type: implementation
+state: passed
+goal: "Update DART.md activation section and role quick reference to reflect the sub-agent model: roles are no longer 'assumed' by the same agent — they are launched as isolated sub-agents by the orchestrator. Update the 'Work on DART-XXX' and 'Work' triggers to clarify that the orchestrator delegates to a sub-agent rather than switching roles."
+
+# DAG
+depends_on: []
+blocks: [DART-013, DART-014]
+parent: DART-008
+
+# Execution
+role: specialist
+granularity: coarse
+priority: high
+context_brief: .dart/briefs/DART-009-role-isolation.md
+
+# Verification
+verify:
+  - "DART.md activation section describes sub-agent delegation for 'Work' and 'Work on DART-XXX'"
+  - "Role Quick Reference table reflects that specialist/evaluator/reflector/scout run as sub-agents"
+  - "The document no longer instructs users to 'switch roles' or 'be the specialist'"
+
+# I/O
+inputs: [.dart/DART.md, .dart/briefs/DART-009-role-isolation.md]
+outputs: [.dart/DART.md]
+
+# Reflection
+attempts: 0
+lessons: []
+
+# Metadata
+created: 2026-04-03T00:00:00Z
+created_by: orchestrator
+claimed_by: null

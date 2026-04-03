@@ -1,0 +1,32 @@
+id: DART-010
+type: decision
+state: passed
+goal: "Human decides which approach to role isolation to implement, based on the research brief from DART-009"
+
+# DAG
+depends_on: [DART-009]
+blocks: []
+parent: DART-008
+
+# Execution
+role: human
+granularity: coarse
+priority: high
+context_brief: .dart/briefs/DART-009-role-isolation.md
+
+# Verification
+verify:
+  - "Human has selected an approach or provided alternative direction"
+
+# I/O
+inputs: [.dart/briefs/DART-009-role-isolation.md]
+outputs: []
+
+# Reflection
+attempts: 0
+lessons: []
+
+# Metadata
+created: 2026-04-03T00:00:00Z
+created_by: orchestrator
+claimed_by: null
